@@ -25,7 +25,6 @@ def sendemail( toemail , title , contents ) :
     send.sendmail( 보내는사람 , toemail , msg.as_string() ) # 문자열로 변환해서 보내기
     send.close()
 
-
 memberemails = [ "kgs2072@naver.com" , "itdanja@kakao.com" , "kgs2072@naver.com" , "itdanja@kakao.com"    ]
 
 #메일 전송 프로그램
@@ -38,4 +37,12 @@ while True :
         title = input(" 제목 : ")
         contents = input(" 내용 : ")
         sendemail( toemail , title , contents )
+        print(toemail, "에게 전송 성공 ")
     if ch == 2 :
+        title = input(" 제목 : ")
+        contents = input(" 내용 : ")
+        for toemail in memberemails :
+            sendemail( toemail , title , contents )
+            print( toemail ,"에게 전송 성공 ")
+    if ch == 3 :
+        break
