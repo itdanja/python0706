@@ -21,6 +21,20 @@ class board :
 def start() : # 프로그램 시작 함수
     boardlist = [ ]
     # 기존 파일의 게시물 불러오기
+    파일2 = open( "boardlist.txt" , "r")
+
+    b = 파일2.read() # 데이터 모두 읽어오기
+    bb = b.split("\n") # 게시물간 분해
+    for i in bb :
+        if not i : break
+        # , 기준으로 분해
+        bs = i.split(",")    # 문자열.split("기준문자") : 기준문자 기준으로 분해
+        # 분해된 변수를 객체에 생성 [ 분해된 변수를 객체로 하나로 합치기 ]
+        temp = board( bs[0] , bs[1] , bs[2] , bs[3] , bs[4] , bs[5] )
+        # 객체 다시 리스트에 담기
+        boardlist.append(temp)
+
+    파일2.close
 
     while True :
         print( "\n[[[[[ 커뮤니티 ]]]]] ")
