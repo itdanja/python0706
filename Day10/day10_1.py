@@ -16,6 +16,7 @@ class Member :
     def login(self , id , password ):
         if self.id == id and self.password == password :
             print("[[ 로그인 성공 ]]")
+            print( self.name , self.phone )
     # 필드 저장
     def membersave(self) :
         file = open("memberlist.txt" , "a") # w  : 파일쓰기: r: 읽기 a:이어쓰기
@@ -24,10 +25,9 @@ class Member :
         file.write( self.id +","+self.password+","+self.name+","+self.phone+"\n")
         file.close()
 
-memberlist = [ ]
-
 while True :
     # 파일 불러오기
+    memberlist = []
     file = open("memberlist.txt" , "r")
     m = file.read() # 모든 텍스트 읽어오기
     mm = m.split("\n") # 회원별 분리
@@ -45,16 +45,22 @@ while True :
         name =  input("이름 : ")
         phone = input("전화번호 : ")
         # 객체 생성과 객체를 리스트에 담기
-            # 회원가입 중복체크 ~
-        temp =  Member(id,password,name,phone)
-        memberlist.append( temp )
-        temp.membersave()
-
+            # 회원가입 아이디 중복체크 ~
+        sw = 0 # 중복 아이디 여부 체크 변수
+        for i in memberlist :
+           if id == i.id :
+                print("[[동일한 아이디가 존재합니다]]]")
+                sw = 1
+        if sw == 0 :
+            temp =  Member(id,password,name,phone)
+            temp.membersave()
+            print("[[[ 회원가입 성공 ]]]")
     if ch == 2 :
         id = input("아이디 : ")
         password = input("비밀번호 : ")
         for i in memberlist :
             i.login( id , password )
+
 
 
 
