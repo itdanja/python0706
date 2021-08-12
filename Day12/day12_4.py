@@ -3,7 +3,7 @@
 import csv
 
 확진자파일 = open("서울시 코로나19 확진자 현황.csv" , "r" , encoding="utf-8") # latin_1, euc-kr, cp949 , utf-8
-확진자 = csv.reader(확진자파일)
+확진자 = csv.reader(확진자파일  )
 확진자리스트 = [ ]
 for i in 확진자 :
     확진자리스트.append(i)
