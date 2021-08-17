@@ -4,7 +4,6 @@ import urllib.parse
 import urllib.request
 from openpyxl import Workbook
 #검색 함수
-
 def 네이버검색( 카테고리 , 검색결과수 ) :
     # 1. 클라이언 정보
     client_id = "w9HPzgkd7qUCVergunhj"  # 신청한 클라이언트의 아이디
@@ -22,12 +21,11 @@ def 네이버검색( 카테고리 , 검색결과수 ) :
     query = "?query=" + urllib.parse.quote(input(카테고리+" 검색 :") )
     # 5. url 합치기
     url_query = url + query + option
-
+##############################################################
     # api 검색 요청 개체 설정
     request = urllib.request.Request(url_query)
     request.add_header("X-Naver-Client-Id", client_id)
     request.add_header("X-Naver-Client-Secret", client_secret)
-
     # 검색 요청
     response = urllib.request.urlopen(request)
     rescode = response.getcode()
@@ -35,7 +33,7 @@ def 네이버검색( 카테고리 , 검색결과수 ) :
         response_body = response.read()
     else:
         print("Error Code:" + rescode)
-
+##############################################################
     text = response_body.decode("utf-8")
     jsontext = json.loads(text)
     list = [ ] # 검색 결과 담을 리스트
@@ -55,7 +53,7 @@ def 네이버검색( 카테고리 , 검색결과수 ) :
         # 셀[ cell : 한칸 ]
         for 행 in range( 1 , (int(검색결과수)+1) ) :
             시트1.cell( row=행 , column=1 ).value = 행
-            시트1.cell( row=행 , column=2 ).value = list[ 행-1 ]
+            시트1.cell( row=행 , column=2 ).value = list[ (행-1) ]
         # 엑셀 저장
         wb.save( filename=파일명 )
 ###########################################################
