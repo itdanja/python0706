@@ -52,9 +52,32 @@ def peek() :
     return stack[top]       # top 위치에 데이터 반환
 
 # 전역변수 선언
-SIZE =
-stack =
-top = -1
+SIZE = int( input(" 스택 크기 입력: ") ) # 스택의 크기를 입력받아
+stack = [ None for _ in range(SIZE) ] # 스택[리스트]에  입력받은 크기만큼 None 할당
+top = -1 # 초기 위치
+
+# 메뉴
+select = input(" 삽입[I] / 추출[E] / 확인[V]  / 종료[X] 중 선택 : ")
+while select !="x" and select !="X" :
+    if select == "I" or select =="i" :
+        data = input(" 입력할 데이터 : ")
+        push(data)
+        print( " 스택 상태 : " , stack )
+    elif select =="E" or select =="e" :
+        data = pop()
+        print(" 추출된 데이터 : " , data)
+        print(" 스택 상태 : " , stack )
+    elif select =="V" or select =="v" :
+        data = peek()
+        print(" 확인된 데이터 : " , data )
+        print(" 스택 상태 : " , stack )
+    else:
+        print(" 알수 없는 행동 ")
+
+    select = input(" 삽입[I] / 추출[E] / 확인[V]  / 종료[X] 중 선택 : ")
+
+print(" 스택 프로그램 종료 ")
+
 
 
 
