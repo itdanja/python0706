@@ -37,7 +37,7 @@ for book in bookAry[ 1 : ] : # 첫번째 도서를 제외한 두번째 도서부
                 current.left = node  # 왼쪽자식노드에 노드 넣기
                 break
             current = current.left # 공백이 아니면 또 왼쪽으로 이동
-       else:       # current 노드보다 크면
+        else:       # current 노드보다 크면
             if current.right == None :  # 오른쪽이 공백이면
                 current.right = node    # 오른쪽자식노드에 노드 넣기
                 break
